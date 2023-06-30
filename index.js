@@ -1,7 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const ApiRoutes =  require("./src/routes/routes")
 require("dotenv").config();
+
 
 const PORT = process.env.PORT;
 
@@ -17,8 +19,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // set default indian local time
 process.env.TZ = process.env.TIME_ZONE;
 
+
 // to initiate routes
-// app.use("/api", ApiRoutes);
+app.use("/api", ApiRoutes);
 
 app.listen(PORT, () => {
 	console.log(`Server Started At Port---------->>>>>>>${PORT}`);
